@@ -1,10 +1,79 @@
-<div class="container">
+<section id="files-index" class="container">
 
-    <div class="col-xs-12">
-        <ul>
-          <li ng-repeat="search in File.searches">{{ search.name }}</li>
-        </ul>
-    </div>
+    <h3>Searched Files</h3>
+
+    <div class="panel-body">
+
+        <div class="dataTables_wrapper">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="dataTables_length" id="example2_length">
+                        <select ng-model="File.numberOfSearchesToDisplay" style="display: inline-block;" class="form-control input-sm inline-block">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div id="example2_filter" class="dataTables_filter">
+                        <label><i class="top icmn-search"></i>
+                            <input type="search" class="form-control input-sm" placeholder="Search" ng-model="searchText">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <table class="table table-hover nowrap improved-table" id="example2" width="100%">
+
+                        <thead>
+                            <tr>
+                                <th>Path</th>
+                                <th>Size</th>
+                                <th>LastModified</th>
+                                <th>LastAccessed</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>Path</th>
+                                <th>Size</th>
+                                <th>LastModified</th>
+                                <th>LastAccessed</th>
+                                <th>Created</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr dir-paginate="file in File.files | itemsPerPage: File.numberOfSearchesToDisplay  | filter: searchText">
+
+                                <td>{{ file.Path }}</td>
+                                <td>{{ file.Size | bytes }}</td>
+                                <td>{{ file.LastModified | date }}</td>
+                                <td>{{ file.LastAccessed | date }}</td>
+                                <td>{{ file.Created | date }}</td>
+
+                            </tr>
 
 
-</div>
+                            <!-- Check for Available Data -->
+                            <tr ng-if="keys(Client.Clients).length <= 0">
+                                <td colspan="100%" class="text-center">No Data Available</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                      <dir-pagination-controls template-url="./app/shared/pagination/pagination-view.html"></dir-pagination-controls>
+
+                </div>
+            </div>
+        </div>
+
+
+</section>

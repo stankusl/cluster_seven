@@ -2,7 +2,7 @@
 
     <h3>Avaialble Results for performed searches.</h3>
 
-    <div class="panel-body col-xs-12">
+    <div class="panel-body">
 
         <div class="dataTables_wrapper">
             <div class="row">
@@ -64,7 +64,9 @@
                                 <td>{{ search.FinishedAt | date }}</td>
                                 <td>{{ search.Count }}</td>
                                 <td class="text-center">
-                                    View Results
+                                    <a ui-sref="files({index : $index})">
+                                      View Results
+                                    </a>
                                 </td>
                             </tr>
 

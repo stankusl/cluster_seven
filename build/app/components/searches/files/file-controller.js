@@ -1,16 +1,16 @@
 (function() {
     'use strict';
-    angular.module('application').controller('FileController', function($rootScope, $scope, $log, $q, FileServices) {
+    angular.module('application').controller('FilesController', function($rootScope, $scope, $log, $q, FileServices) {
         self = this;
         $rootScope.pageTitle = 'Home';
 
 
-        self.searches = {};
+        self.files = {};
 
-        FileServices.getSearches().then(
+        FileServices.getSearch().then(
           function(result) {
               console.log(result);
-              self.searches = result;
+              self.files = result;
 
           },
           function(err) {
