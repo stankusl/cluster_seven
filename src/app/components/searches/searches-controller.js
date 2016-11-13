@@ -4,12 +4,12 @@
         self = this;
         $rootScope.pageTitle = 'Home';
 
-
+        self.numberOfSearchesToDisplay = '10';  
         self.searches = {};
 
         SearchesServices.getSearches().then(
           function(result) {
-              console.log(result);
+
               self.searches = result;
 
           },

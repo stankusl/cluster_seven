@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('application').factory('FileServices', ['$http', '$q', '$log', '$rootScope', SearchesServices]);
+    angular.module('application').factory('SearchesServices', ['$http', '$q', '$log', '$rootScope', SearchesServices]);
 
     function SearchesServices($http, $q, $log, $rootScope) {
 

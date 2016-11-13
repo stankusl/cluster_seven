@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('application', ['ui.bootstrap', 'ui.router'])
+    angular.module('application', ['ui.bootstrap', 'ui.router', 'angularUtils.directives.dirPagination'])
 
     .run(['$rootScope', '$state', function($rootScope, $state) {
 
