@@ -4,39 +4,44 @@
 
     <div class="panel-body">
 
-        <div class="dataTables_wrapper">
-            <div class="row">
-                <div class="col-xs-2">
-                    <div class="dataTables_length" id="example2_length">
-                        <select ng-model="Searches.numberOfSearchesToDisplay" style="display: inline-block;" class="form-control input-sm inline-block">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
+          <div class="row" style="margin-bottom:20px;">
+
+              <div class="col-xs-2">
+                  <select ng-model="Searches.numberOfSearchesToDisplay" style="display: inline-block;" class="form-control input-sm inline-block">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                  </select>
+              </div>
+
+              <div class="col-xs-7"></div>
+
+              <div class="col-xs-3">
+
+                <div class="input-group pull-right">
+                  <span class="input-group-addon" id="basic-addon1">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  <input type="text" class="form-control" placeholder="Search" ng-model="searchText" aria-describedby="basic-addon1">
                 </div>
-                <div class="col-xs-6">
-                    <div id="example2_filter" class="dataTables_filter">
-                        <label><i class="top icmn-search"></i>
-                            <input type="search" class="form-control input-sm" placeholder="Search" ng-model="searchText">
-                        </label>
-                    </div>
-                </div>
-            </div>
+
+              </div>
+
+          </div>
 
             <div class="row">
                 <div class="col-xs-12">
 
-                    <table class="table table-hover nowrap improved-table" id="example2" width="100%">
+                    <table class="table table-hover nowrap improved-table" width="100%">
 
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Requester</th>
-                                <th>Search Created</th>
-                                <th>Search Finished</th>
+                                <th class="hidden-md-down">Requester</th>
+                                <th class="hidden-md-down">Search Created</th>
+                                <th class="hidden-md-down">Search Finished</th>
                                 <th>Number of Results</th>
                                 <th>Options</th>
                             </tr>
@@ -44,13 +49,13 @@
 
                         <tfoot>
                             <tr>
-                              <th>Name</th>
-                              <th>Description</th>
-                              <th>Requester</th>
-                              <th>Search Created</th>
-                              <th>Search Finished</th>
-                              <th>Number of Results</th>
-                              <th>Options</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th class="hidden-md-down">Requester</th>
+                                <th class="hidden-md-down">Search Created</th>
+                                <th class="hidden-md-down">Search Finished</th>
+                                <th>Number of Results</th>
+                                <th>Options</th>
                             </tr>
                         </tfoot>
 
@@ -59,9 +64,9 @@
 
                                 <td>{{ search.Name }}</td>
                                 <td>{{ search.Description }}</td>
-                                <td>{{ search.Requester }}</td>
-                                <td>{{ search.RequestedAt | date }}</td>
-                                <td>{{ search.FinishedAt | date }}</td>
+                                <td class="hidden-md-down">{{ search.Requester }}</td>
+                                <td class="hidden-md-down">{{ search.RequestedAt | date }}</td>
+                                <td class="hidden-md-down">{{ search.FinishedAt | date }}</td>
                                 <td>{{ search.Count }}</td>
                                 <td class="text-center">
                                     <a ui-sref="files({index : $index})">
@@ -72,7 +77,7 @@
 
 
                             <!-- Check for Available Data -->
-                            <tr ng-if="keys(Client.Clients).length <= 0">
+                            <tr ng-if="(earches.searches).length <= 0">
                                 <td colspan="100%" class="text-center">No Data Available</td>
                             </tr>
 

@@ -1,151 +1,36 @@
+@import 'fonts';
+
+* {
+  border-radius: 0px !important;
+}
+
+.text-center {
+  text-align: center;
+
+}
+
 body {
     background: #ffffed !important;
 }
-// .card-back {
-// }
-.card-container {
-    perspective: 1000;
-    position: relative;
-    margin: 10px auto;
-    width: 150px;
-    height: 250px;
-    z-index: 1;
-    transform: rotateY( 180deg );
 
+#files-index {
+  .page-link{
+    color: #777;
 
-    .card-inner {
-        width: 150px;
-        height: 250px;
-        transform-style: preserve-3d;
-        transition: all 1.0s linear;
-        border-radius: 6px;
-        border: 3px solid #fff;
+  }
 
-        .card-front {
-            width: 150px;
-            height: 250px;
-            border-radius: 6px;
-            display: block;
-            transform: rotateY(180deg);
-            box-sizing: border-box;
-            border: 3px solid #fff;
-            padding: 10px;
-            color: white;
-            text-align: center;
-            background-color: #6d695c;
-            background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px), linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)), linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-            background-size: 70px 120px;
-
-            .rank {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 6px;
-            border: 3px solid #fff;
-        }
-    }
-}
-// New Try
-.card-holder {
-    width: 160px;
-    height: 200px;
-    position: relative;
-    perspective: 800px;
-    margin-bottom: 20px;
-
-    .blocked {
-        z-index: 200;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        cursor: not-allowed;
-        background: url('../../assets/img/disabled.png') no-repeat center center transparent;
-    }
+  .page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover {
+    background-color: rgba(249, 142, 142, 0.16);
+  }
 }
 
-.card {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: transform 1s;
-    cursor: pointer;
-    transform: rotateY( 180deg );
-    // Select Test for mobile devices
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    &.turn {
-      transform: rotateY( 0deg );
-    }
+#searches-index {
+  .page-link{
+    color: #777;
 
-    figure {
-        margin: 0;
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 8px;
-        border: 5px solid #fff;
+  }
 
-        &.front {
-            background: #fff;
-
-            span {
-                position: absolute;
-                top: 10px;
-                right: 0;
-                left: -30px;
-                width: 20px;
-                height: 20px;
-                bottom: 0;
-                margin: auto;
-                color: red;
-                font-weight: bold;
-                font-size: 100px;
-                line-height: 20px;
-
-                &.rank-1 {
-                    font-size: 30px;
-                    left: -115px;
-                    top: -155px;
-                }
-
-                &.rank-2 {
-                    font-size: 30px;
-                    right: -135px;
-                    bottom: -145px;
-                }
-
-                &.s {
-                    color: black;
-                }
-
-                &.c {
-                    color: black;
-                }
-            }
-        }
-
-        &.back {
-          background-color:white;
-          background-image:
-          radial-gradient(midnightblue 9px, transparent 10px),
-          repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);
-          background-size: 30px 30px, 90px 90px;
-          background-position: 0 0;
-          transform: rotateY( 180deg );
-        }
-    }
+  .page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover {
+    background-color: rgba(249, 142, 142, 0.16);
+  }
 }

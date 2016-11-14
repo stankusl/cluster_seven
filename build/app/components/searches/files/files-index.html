@@ -4,66 +4,79 @@
 
     <div class="panel-body">
 
-        <div class="dataTables_wrapper">
-            <div class="row">
+            <div class="row" style="margin-bottom:20px;">
+
                 <div class="col-xs-2">
-                    <div class="dataTables_length" id="example2_length">
-                        <select ng-model="File.numberOfSearchesToDisplay" style="display: inline-block;" class="form-control input-sm inline-block">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
+                    <select ng-model="File.numberOfSearchesToDisplay" style="display: inline-block;" class="form-control input-sm inline-block">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
                 </div>
-                <div class="col-xs-6">
-                    <div id="example2_filter" class="dataTables_filter">
-                        <label><i class="top icmn-search"></i>
-                            <input type="search" class="form-control input-sm" placeholder="Search" ng-model="searchText">
-                        </label>
-                    </div>
+
+                <div class="col-xs-7"></div>
+
+                <div class="col-xs-3">
+
+                  <div class="input-group pull-right">
+                    <span class="input-group-addon" id="basic-addon1">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search" ng-model="searchText" aria-describedby="basic-addon1">
+                  </div>
+
                 </div>
+
             </div>
+
+            <div class="clearfix"></div>
 
             <div class="row">
                 <div class="col-xs-12">
 
-                    <table class="table table-hover nowrap improved-table" id="example2" width="100%">
+                    <table class="table table-hover nowrap improved-table" width="100%">
 
                         <thead>
                             <tr>
-                                <th>Path</th>
+                                <th>Icon</th>
+                                <th>Name</th>
+                                <th style="max-width:300px; word-wrap: break-word;">Path</th>
                                 <th>Size</th>
-                                <th>LastModified</th>
-                                <th>LastAccessed</th>
-                                <th>Created</th>
+                                <th class="hidden-md-down">Last Modified</th>
+                                <th class="hidden-md-down">Last Accessed</th>
+                                <th class="hidden-md-down">Created</th>
                             </tr>
                         </thead>
 
                         <tfoot>
                             <tr>
-                                <th>Path</th>
+                                <th>Icon</th>
+                                <th>Name</th>
+                                <th style="max-width:300px; word-wrap: break-word;">Path</th>
                                 <th>Size</th>
-                                <th>LastModified</th>
-                                <th>LastAccessed</th>
-                                <th>Created</th>
+                                <th class="hidden-md-down">Last Modified</th>
+                                <th class="hidden-md-down">Last Accessed</th>
+                                <th class="hidden-md-down">Created</th>
                             </tr>
                         </tfoot>
 
                         <tbody>
                             <tr dir-paginate="file in File.files | itemsPerPage: File.numberOfSearchesToDisplay  | filter: searchText">
 
-                                <td>{{ file.Path }}</td>
+                                <td><img ng-src="assets/img/{{ File.returnExtension(file.Path) }}.png" /></td>
+                                <td>{{ File.returnName(file.Path) }}</td>
+                                <td style="max-width:300px; word-wrap: break-word;">{{ file.Path }}</td>
                                 <td>{{ file.Size | bytes }}</td>
-                                <td>{{ file.LastModified | date }}</td>
-                                <td>{{ file.LastAccessed | date }}</td>
-                                <td>{{ file.Created | date }}</td>
+                                <td class="hidden-md-down">{{ file.LastModified | date }}</td>
+                                <td class="hidden-md-down">{{ file.LastAccessed | date }}</td>
+                                <td class="hidden-md-down">{{ file.Created | date }}</td>
 
                             </tr>
 
 
                             <!-- Check for Available Data -->
-                            <tr ng-if="keys(Client.Clients).length <= 0">
+                            <tr ng-if="(File.files).length <= 0">
                                 <td colspan="100%" class="text-center">No Data Available</td>
                             </tr>
 
@@ -73,7 +86,5 @@
 
                 </div>
             </div>
-        </div>
-
 
 </section>

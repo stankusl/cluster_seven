@@ -4,8 +4,19 @@
         self = this;
         $rootScope.pageTitle = 'Home';
 
-        self.numberOfSearchesToDisplay = '10';
+        self.numberOfSearchesToDisplay = '100';
         self.files = {};
+
+        self.returnExtension = function(filePath){
+          var extension = (/[.]/.exec(filePath)) ? /[^.]+$/.exec(filePath)[0] : undefined;
+
+          return extension.toLowerCase();
+        }
+
+        self.returnName = function(filePath) {
+            var filename = filePath.replace(/^.*[\\\/]/, '')
+            return filename;
+        }
 
         FileServices.getSearch($stateParams.index).then(
             function(result) {
